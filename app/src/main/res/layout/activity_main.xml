@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="Rechtop zitten"
+            android:textColor="@color/fg"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/Body"
+            android:layout_marginTop="4dp"
+            android:text="Willekeurige seintjes voor je houding, en bijhouden hoe lang je aan je bureau zit."
+            android:textColor="@color/muted" />
+
+        <!-- Status -->
+        <LinearLayout
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/card"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:textColor="@color/fg"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/tvStateSub"
+                style="@style/Body"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/muted" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnToggle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Start" />
+
+            <Button
+                android:id="@+id/btnAway"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Even weg" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnTest"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test seintje"
+            android:textColor="@color/accent" />
+
+        <TextView
+            android:id="@+id/tvPerm"
+            style="@style/Body"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card"
+            android:padding="14dp"
+            android:text="Meldingen staan uit, dus je krijgt nog geen seintjes. Tik hier om ze toe te staan."
+            android:textColor="@color/alert"
+            android:visibility="gone" />
+
+        <!-- Vandaag -->
+        <TextView
+            style="@style/Label"
+            android:text="Vandaag" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    style="@style/Caption"
+                    android:text="Aan je bureau" />
+
+                <TextView
+                    android:id="@+id/tvDesk"
+                    style="@style/Figure"
+                    android:text="0m" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    style="@style/Caption"
+                    android:text="Zit aaneen" />
+
+                <TextView
+                    android:id="@+id/tvSit"
+                    style="@style/Figure"
+                    android:text="0m" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    style="@style/Caption"
+                    android:text="Pauzes" />
+
+                <TextView
+                    android:id="@+id/tvBreaks"
+                    style="@style/Figure"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/tvBreakTime"
+                    style="@style/Caption"
+                    android:text="samen 0m" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Houding -->
+        <TextView
+            style="@style/Label"
+            android:text="Houdingseintjes" />
+
+        <TextView
+            android:id="@+id/tvMin"
+            style="@style/Body" />
+
+        <SeekBar
+            android:id="@+id/sbMin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:max="55" />
+
+        <TextView
+            android:id="@+id/tvMax"
+            style="@style/Body" />
+
+        <SeekBar
+            android:id="@+id/sbMax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="110" />
+
+        <!-- Vaste tijden -->
+        <TextView
+            style="@style/Label"
+            android:text="Vaste tijden" />
+
+        <Switch
+            android:id="@+id/swSched"
+            style="@style/Body"
+            android:text="Automatisch aan en uit" />
+
+        <LinearLayout
+            android:id="@+id/llDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnFrom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnTo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <!-- Logboek -->
+        <TextView
+            style="@style/Label"
+            android:text="Logboek" />
+
+        <TextView
+            android:id="@+id/tvLog"
+            style="@style/Body"
+            android:fontFeatureSettings="tnum"
+            android:lineSpacingExtra="6dp" />
+
+        <!-- Tips -->
+        <TextView
+            style="@style/Label"
+            android:text="Goed om te weten" />
+
+        <TextView
+            style="@style/Body"
+            android:text="• Trilt je Galaxy Fit3 mee? Zet in de Galaxy Wearable-app bij Meldingen de app Rechtop aan.\n• Voeg de tegel Rechtop toe aan je snelle instellingen. Daarmee zet je met één tik Even weg aan of uit.\n• Ben je minstens 2 minuten weg, dan telt dat als pauze en begint je zittijd opnieuw.\n• Samsung zet apps soms in slaap. Zet de batterij voor deze app op Onbeperkt, anders kunnen seintjes uitblijven."
+            android:textColor="@color/muted" />
+
+        <Button
+            android:id="@+id/btnBattery"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open app-instellingen"
+            android:textColor="@color/accent" />
+    </LinearLayout>
+</ScrollView>
