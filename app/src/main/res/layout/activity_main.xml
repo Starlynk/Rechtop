@@ -52,6 +52,16 @@
                 style="@style/Body"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/muted" />
+
+            <Button
+                android:id="@+id/btnAck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/alert"
+                android:text="Zit goed ✓"
+                android:textColor="@color/surface"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout

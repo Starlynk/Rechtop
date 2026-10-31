@@ -11,8 +11,18 @@ android {
         applicationId = "nl.rechtopzitten"
         minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
+    }
+
+    // Fixed key, so every GitHub build can be installed over the previous one.
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("rechtop.keystore")
+            storePassword = "rechtop123"
+            keyAlias = "rechtop"
+            keyPassword = "rechtop123"
+        }
     }
 
     buildTypes {

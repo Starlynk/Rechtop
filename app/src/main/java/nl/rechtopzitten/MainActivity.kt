@@ -108,6 +108,11 @@ class MainActivity : Activity() {
             if (!Notifier.canPost(this)) askNotificationPermission()
             else Notifier.nudge(this, Tracker.tips.random())
         }
+        findViewById<Button>(R.id.btnAck).setOnClickListener {
+            Tracker.ack(this)
+            lastMessage = "Mooi."
+            render()
+        }
         tvPerm.setOnClickListener { askNotificationPermission() }
         findViewById<Button>(R.id.btnBattery).setOnClickListener {
             startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName")))
@@ -228,14 +233,22 @@ class MainActivity : Activity() {
         val now = System.currentTimeMillis()
         val mode = s.mode
 
-        when (mode) {
-            Store.MODE_DESK -> {
+        val pending = mode == Store.MODE_DESK && s.pendingSince != 0L
+        findViewById<Button>(R.id.btnAck).visibility = if (pending) View.VISIBLE else View.GONE
+
+        when {
+            pending -> {
+                tvState.text = "Hoe zit je nu?"
+                tvState.setTextColor(getColor(R.color.alert))
+                tvStateSub.text = "Seintje van ${hm.format(Date(s.pendingSince))}. Zit even recht en vink het af."
+            }
+            mode == Store.MODE_DESK -> {
                 tvState.text = "Aan je bureau"
                 tvState.setTextColor(getColor(R.color.accent))
                 tvStateSub.text = lastMessage
                     ?: "Volgende seintje ergens tussen ${s.minMin} en ${s.maxMin} minuten."
             }
-            Store.MODE_AWAY -> {
+            mode == Store.MODE_AWAY -> {
                 tvState.text = "Even weg"
                 tvState.setTextColor(getColor(R.color.fg))
                 tvStateSub.text = "Weg sinds ${hm.format(Date(s.awaySince))} (${Tracker.dur(now - s.awaySince)}). Seintjes staan op pauze."

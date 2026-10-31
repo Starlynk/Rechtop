@@ -66,6 +66,8 @@ object Notifier {
             .setCategory(Notification.CATEGORY_REMINDER)
             .setAutoCancel(true)
             .setContentIntent(openApp(ctx))
+            // Swiping the notification away (on the phone or on the Fit3) counts as "Zit goed".
+            .setDeleteIntent(Alarms.broadcast(ctx, Alarms.ACTION_ACK, 13))
             .addAction(action(ctx, Alarms.ACTION_ACK, "Zit goed", 10))
             .addAction(action(ctx, Alarms.ACTION_AWAY, "Even weg", 11))
             .build()
